@@ -92,16 +92,52 @@ function cont()
 {
     inquirer 
         .prompt(newMember)
-        .then(// write the other questions to insert in here with an if, then statement)
+        .then((input, list) => {
+            if (`${list.choices}` == 'Engineer'){
+                engineerQuests();
+            } else if (`${list.choices}` == `Intern`) {
+                internQuests();
+            } else {
+                writeToFile(input);
+            }
+        })
 }
 
-function 
+function engineerQuests(){
+    inquirer
+        .prompt(engineerQs)
+        .then(menu)
+        .then((input, list) => {
+            if (`${list.choices}` == 'Engineer'){
+                engineerQuests();
+            } else if (`${list.choices}` == `Intern`) {
+                internQuests();
+            } else {
+                writeToFile(input);
+            }
+        });
+    };
+
+function internQuests(){
+    inquirer
+        .prompt(internQs)
+        .then(menu)
+        .then((input, list) => {
+            if (`${list.choices}` == 'Engineer'){
+                engineerQuests();
+            } else if (`${list.choices}` == `Intern`) {
+                internQuests();
+            } else {
+                writeToFile(input);
+            }
+        });
+}
 
 
 
 //Add where and what the file should be called
 function writeToFile(input) {
-    fs.writeFileSync(`${input.fileName}.md`, markdown(input))
+    fs.writeFileSync(`team.html`, markdown(input))
 }
 
 // create a function for the start of the code

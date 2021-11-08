@@ -47,29 +47,29 @@ const engineerQs = [
     {
         type: 'input',
         name: 'engName',
-        messgae: 'What is the engineer/s name?'
+        message: 'What is the engineer/s name?'
     },
     {
         type: 'input',
         name: 'engID',
-        messgae: 'What is the engineer/s employee ID?'
+        message: 'What is the engineer/s employee ID?'
     },
     {
         type: 'input',
         name: 'engEmail',
-        messgae: 'What is the engineer/s email?'
+        message: 'What is the engineer/s email?'
     },
     {
         type: 'input',
         name: 'engGitHub',
-        messgae: 'What is the engineer/s github username?'
+        message: 'What is the engineer/s github username?'
     }
 ]
 const internQs = [
     {
         type: 'input',
         name: 'internName',
-        messgae: 'What is the intern/s name?'
+        message: 'What is the intern/s name?'
     },
     {
         type: 'input',
@@ -79,12 +79,12 @@ const internQs = [
     {
         type: 'input',
         name: 'internEmail',
-        messgae: 'What is the intern/s email?'
+        message: 'What is the intern/s email?'
     },
     {
         type: 'input',
         name: 'internGitHub',
-        messgae: 'What is the intern/s github username?'
+        message: 'What is the intern/s github username?'
     }
 ]
 
@@ -92,7 +92,7 @@ function cont()
 {
     inquirer 
         .prompt(newMember)
-        .then((input, list) => {
+        .then((list) => {
             if (`${list.choices}` == 'Engineer'){
                 engineerQuests();
             } else if (`${list.choices}` == `Intern`) {
@@ -106,11 +106,11 @@ function cont()
 function engineerQuests(){
     inquirer
         .prompt(engineerQs)
-        .then(menu)
-        .then((input, list) => {
-            if (`${list.choices}` == 'Engineer'){
+        // .then(menu) //only add one .then
+        .then((list) => {
+            if (list.choices == 'Engineer'){
                 engineerQuests();
-            } else if (`${list.choices}` == `Intern`) {
+            } else if (list.choices == `Intern`) {
                 internQuests();
             } else {
                 writeToFile(input);
@@ -122,7 +122,7 @@ function internQuests(){
     inquirer
         .prompt(internQs)
         .then(menu)
-        .then((input, list) => {
+        .then((list) => {
             if (`${list.choices}` == 'Engineer'){
                 engineerQuests();
             } else if (`${list.choices}` == `Intern`) {
@@ -146,7 +146,7 @@ function init() {
     .prompt(start)
     .then(menu)
     .then((input, list) => {
-        if (`${list.choices}` == 'Finished'){
+        if (list.choices == 'Finished'){
           writeToFile(input);  
         } else {
             cont();

@@ -1,8 +1,9 @@
 const inquirer = require('inquirer')
-const jest = require('jest')
 const fs = require('fs')
-const path = require('path')
-const markdown = require('./generatemarkdown')
+// do I need this?
+// const path = require('path')
+const markdown = require('./src/markdown')
+const 
 
 const start = [
     {

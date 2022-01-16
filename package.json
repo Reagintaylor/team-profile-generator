@@ -8,6 +8,7 @@
     "test": "tests"
   },
   "dependencies": {
+    "dotenv": "^12.0.3",
     "fs": "0.0.1-security",
     "inquirer": "^8.2.0",
     "jest": "^27.3.1"

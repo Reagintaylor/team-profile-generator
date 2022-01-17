@@ -37,7 +37,7 @@ describe('Render Items', () => {
     });
 
     it('Correctly gets role', () => {
-        const manager = 'enginner';
+        const manager = 'Manager';
         const response = new Manager ('Reagin', '13','reagintt@gmail.com','312');
 
         expect(response.getRole()).toBe(manager);

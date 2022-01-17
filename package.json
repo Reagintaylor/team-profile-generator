@@ -15,7 +15,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "test"
+    "test": "jest --verbose test/*"
   },
   "repository": {
     "type": "git",

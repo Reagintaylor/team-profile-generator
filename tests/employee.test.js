@@ -23,14 +23,14 @@ describe('Render Items', () => {
     });
 
     it('Correctly gets email', () => {
-        const email = 'rturner@gmail.com';
+        const email = 'reagintt@gmail.com';
         const response = new Employee ('Reagin', '13','reagintt@gmail.com','Engineer');
 
         expect(response.getEmail()).toBe(email);
     });
 
     it('Correctly returns role', () => {
-        const role = 'Engineer';
+        const role = 'Employee';
         const response = new Employee ('Reagin', '13','reagintt@gmail.com','Engineer');
 
         expect(response.getRole()).toBe(role);

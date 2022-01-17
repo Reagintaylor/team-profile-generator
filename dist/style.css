@@ -2,3 +2,23 @@
 .card{
     width: 18rem;
 }
+
+body {
+    text-align: center;
+}
+
+header {
+    padding-top: 10%;
+    padding-bottom: 10%;
+    
+}
+
+main {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex: auto;
+    justify-content: center;
+} 
+
+

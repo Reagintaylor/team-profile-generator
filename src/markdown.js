@@ -10,7 +10,7 @@ function beginningMarkdown(member) {
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
-        <link rel="stylesheet" href="/style.css">
+        <link rel="stylesheet" href="style.css">
         <title>Team Profile Generator</title>
     </head>
     <body>
@@ -26,7 +26,7 @@ function beginningMarkdown(member) {
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">ID: ${member.getId()}</li>
                     <li class="list-group-item">Email: <a href="mailto: ${member.getEmail()}" target="_blank">${member.getEmail()}</a></li>
-                    <li class="list-group-item">Office Number: ${member.getOffNum()}</li>
+                    <li class="list-group-item">Office Number: ${member.getOfficeNumber()}</li>
                 </ul>
             </section>`
     };

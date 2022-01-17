@@ -11,32 +11,31 @@ const Manager = require("./lib/Manager")
 const start = [
     {
         type: 'input',
-        name: 'managerName',
+        name: 'name',
         message: 'Hello Team Manager, what is your name?'
     },
     {
         type: 'input',
-        name: 'managerID',
+        name: 'id',
         message: 'What is your employee ID?'
     },
     {
         type: 'input',
-        name: 'managerEmail',
+        name: 'email',
         message: `Great! 
          What is your email?`
     },
     {
         type: 'input',
-        name: 'managerOffNum',
-        message: 'Please enter your office numer.'
+        name: 'officeNumber',
+        message: 'Please enter your office number.'
     },
 ]
 const menu = [
     {
-        type: 'list',
+        type: 'confirm',
         name: 'newMemb',
         message: 'Would you like to add a new member or finish up?',
-        choices: ['Add new member', 'Finished']
     },
 ]
 const newMember = [
@@ -50,44 +49,44 @@ const newMember = [
 const engineerQs = [
     {
         type: 'input',
-        name: 'engName',
+        name: 'name',
         message: 'What is the engineer/s name?'
     },
     {
         type: 'input',
-        name: 'engID',
+        name: 'id',
         message: 'What is the engineer/s employee ID?'
     },
     {
         type: 'input',
-        name: 'engEmail',
+        name: 'email',
         message: 'What is the engineer/s email?'
     },
     {
         type: 'input',
-        name: 'engGitHub',
+        name: 'github',
         message: 'What is the engineer/s github username?'
     }
 ]
 const internQs = [
     {
         type: 'input',
-        name: 'internName',
+        name: 'name',
         message: 'What is the intern/s name?'
     },
     {
         type: 'input',
-        name: 'internID',
+        name: 'id',
         messgae: 'What is the intern/s employee ID?'
     },
     {
         type: 'input',
-        name: 'internEmail',
+        name: 'email',
         message: 'What is the intern/s email?'
     },
     {
         type: 'input',
-        name: 'internGitHub',
+        name: 'gitHub',
         message: 'What is the intern/s github username?'
     }
 ]
@@ -97,10 +96,10 @@ function cont()
     inquirer 
         .prompt(menu)
         .then((input) => {
-            if (`${input}` == 'Add new member'){
+            if (input.newMemb){
                 moreMembs();
-            } else if(`${input}` == `Finished`) {
-                fs.appendFile(`./dist/team.html`, markdown.endingMarkdown(), (err) => {
+            } else  {
+                fs.appendFileSync(`./dist/team.html`, markdown.endingMarkdown(), (err) => {
                     if (err) {
                         console.log(err)
                     };
@@ -113,9 +112,9 @@ function moreMembs(){
     inquirer
         .prompt(newMember)
         .then((input) => {
-            if (`${input}` == 'Engineer'){
+            if (input.membList === 'Engineer'){
                 engineerQuests();
-            } else if(`${input}` == `Intern`){
+            } else if(input.membList === 'Intern'){
                 internQuests();
             } 
         })
@@ -127,7 +126,7 @@ function engineerQuests(){
         .then((input) => {
 
             const engineerEntry =  new Engineer(input.name, input.id, input.email, input.github)
-            fs.appendFile(`./dist/team.html`, markdown.engineerMarkdown(engineerEntry), (err) => {
+            fs.appendFileSync(`./dist/team.html`, markdown.engineerMarkdown(engineerEntry), (err) => {
                 if (err) {
                     console.log(err)
                 };
@@ -141,7 +140,7 @@ function internQuests(){
         .prompt(internQs)
         .then((input) => {
             const internEntry =  new Intern (input.name, input.id, input.email, input.school)
-            fs.appendFile(`./dist/team.html`, markdown.internMarkdown(internEntry), (err) => {
+            fs.appendFileSync(`./dist/team.html`, markdown.internMarkdown(internEntry), (err) => {
                 if (err) {
                     console.log(err)
                 };

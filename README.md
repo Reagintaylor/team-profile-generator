@@ -1,8 +1,17 @@
 # team-profile-generator
 
 ## Todos
-- Add the index.js, the beginning questions
-- install inquirer and file system
+- Complete testing
+- finish readme
+- record video
 
-## Where I Left Off
-- you last left off working in the index.js and tweaking the questions
+## Description
+
+## Table of Contents
+
+## Installation
+
+## Usage
+
+## Links
+

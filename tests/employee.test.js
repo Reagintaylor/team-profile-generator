@@ -1,4 +1,4 @@
-const Employee = require('../lib/employee');
+const Employee = require('../lib/Employee');
 
 describe('Object creation', () => {
     it('New object should be created', () => {
@@ -8,30 +8,30 @@ describe('Object creation', () => {
 });
 
 describe('Render Items', () => {
-    it('Correctly returns name', () => {
+    it('Correctly gets name', () => {
         const name = 'Reagin';
-        const response = new Employee ('Reagin', '01','reagintt@yahoo.com','Intern');
+        const response = new Employee ('Reagin', '13','reagintt@gmail.com','Engineer');
 
         expect(response.getName()).toBe(name);
     });
 
     it('Correctly gets id', () => {
-        const id = '11';
-        const response = new Employee ('Ridge', '11','ridgett@aol.com','Manager');
+        const id = '13';
+        const response = new Employee ('Reagin', '13','reagintt@gmail.com','Engineer');
 
         expect(response.getId()).toBe(id);
     });
 
     it('Correctly gets email', () => {
         const email = 'rturner@gmail.com';
-        const response = new Employee ('Rodney', '22','rturner@gmail.com','Engineer');
+        const response = new Employee ('Reagin', '13','reagintt@gmail.com','Engineer');
 
         expect(response.getEmail()).toBe(email);
     });
 
     it('Correctly returns role', () => {
         const role = 'Engineer';
-        const response = new Employee ('Rhonda', '33','floyturner@gmail.com','Engineer');
+        const response = new Employee ('Reagin', '13','reagintt@gmail.com','Engineer');
 
         expect(response.getRole()).toBe(role);
     });

@@ -2,7 +2,6 @@
 // beginning markdown
 // different employee markdowns
 // end of markdown
-//look at fonts to add
 function beginningMarkdown(member) {
     return `
     <!DOCTYPE html>

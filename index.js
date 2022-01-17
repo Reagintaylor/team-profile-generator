@@ -3,7 +3,10 @@ const fs = require('fs')
 // do I need this?
 // const path = require('path')
 const markdown = require('./src/markdown')
-const 
+const Engineer = require("./lib/Engineer")
+const Intern = require("./lib/Intern")
+const Employee = require("./lib/Employee")
+const Manager = require("./lib/Manager")
 
 const start = [
     {
@@ -92,67 +95,84 @@ const internQs = [
 function cont()
 {
     inquirer 
-        .prompt(newMember)
-        .then((list) => {
-            if (`${list.choices}` == 'Engineer'){
-                engineerQuests();
-            } else if (`${list.choices}` == `Intern`) {
-                internQuests();
-            } else {
-                writeToFile(input);
+        .prompt(menu)
+        .then((input) => {
+            if (`${input}` == 'Add new member'){
+                moreMembs();
+            } else if(`${input}` == `Finished`) {
+                fs.appendFile(`./dist/team.html`, markdown.endingMarkdown(), (err) => {
+                    if (err) {
+                        console.log(err)
+                    };
+                })
             }
+        })
+}
+
+function moreMembs(){
+    inquirer
+        .prompt(newMember)
+        .then((input) => {
+            if (`${input}` == 'Engineer'){
+                engineerQuests();
+            } else if(`${input}` == `Intern`){
+                internQuests();
+            } 
         })
 }
 
 function engineerQuests(){
     inquirer
         .prompt(engineerQs)
-        // .then(menu) //only add one .then
-        .then((list) => {
-            if (list.choices == 'Engineer'){
-                engineerQuests();
-            } else if (list.choices == `Intern`) {
-                internQuests();
-            } else {
-                writeToFile(input);
-            }
+        .then((input) => {
+
+            const engineerEntry =  new Engineer(input.name, input.id, input.email, input.github)
+            fs.appendFile(`./dist/team.html`, markdown.engineerMarkdown(engineerEntry), (err) => {
+                if (err) {
+                    console.log(err)
+                };
+            })
+            cont()
         });
     };
 
 function internQuests(){
     inquirer
         .prompt(internQs)
-        .then(menu)
-        .then((list) => {
-            if (`${list.choices}` == 'Engineer'){
-                engineerQuests();
-            } else if (`${list.choices}` == `Intern`) {
-                internQuests();
-            } else {
-                writeToFile(input);
-            }
+        .then((input) => {
+            const internEntry =  new Intern (input.name, input.id, input.email, input.school)
+            fs.appendFile(`./dist/team.html`, markdown.internMarkdown(internEntry), (err) => {
+                if (err) {
+                    console.log(err)
+                };
+            })
+            cont()
         });
-}
+};
 
 
 
 //Add where and what the file should be called
 function writeToFile(input) {
-    fs.writeFileSync(`team.html`, markdown(input))
+    fs.writeFileSync(`./dist/team.html`, markdown.beginningMarkdown(input), (err) => {
+        if(err){
+            console.log(err)
+        };
+        return
+    })
 }
 
 // create a function for the start of the code
 function init() {
     inquirer
     .prompt(start)
-    .then(menu)
-    .then((input, list) => {
-        if (list.choices == 'Finished'){
-          writeToFile(input);  
-        } else {
-            cont();
-        }
-    });
+    .then((input) => {
+        const managerRes = new Manager(input.name, input.id, input.email, input.officeNumber)
+        // writing the content to the file
+        writeToFile(managerRes);
+        // fucntion to see if they want more members or to be finished
+        cont();
+    })  
 };
 
 // Function call to initialize app

@@ -36,4 +36,11 @@ describe('Render Items', () => {
         expect(response.getGithub()).toBe(github);
     });
 
+    it('Correctly gets role', () => {
+        const role = 'Engineer';
+        const response = new Engineer ('Reagin', '13','reagintt@gmail.com','reagin.taylor');
+
+        expect(response.getRole()).toBe(role);
+    });
+
 });

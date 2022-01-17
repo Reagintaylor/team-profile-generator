@@ -36,4 +36,11 @@ describe('Render Items', () => {
         expect(response.getSchool()).toBe(school);
     });
 
+    it('Correctly gets role', () => {
+        const role = 'Intern';
+        const response = new Intern ('Reagin', '13','reagintt@gmail.com','Georiga Tech');
+
+        expect(response.getRole()).toBe(role);
+    });
+
 });

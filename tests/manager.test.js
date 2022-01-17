@@ -36,4 +36,11 @@ describe('Render Items', () => {
         expect(response.getOfficeNumber()).toBe(officNumb);
     });
 
+    it('Correctly gets role', () => {
+        const manager = 'enginner';
+        const response = new Manager ('Reagin', '13','reagintt@gmail.com','312');
+
+        expect(response.getRole()).toBe(manager);
+    });
+
 });

@@ -33,5 +33,5 @@ npm test
 ## Links
 
 - [Github](https://github.com/Reagintaylor/team-profile-generator)
-- ![video link](https://drive.google.com/file/d/1P60No9M3jQYjtS1ZCfZMWUD7w7Zv5sAa/view?usp=sharing)
+- ![video link](https://watch.screencastify.com/v/nNQ1gbfGhf5drYJ3PEXV)
 
